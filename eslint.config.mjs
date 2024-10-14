@@ -12,7 +12,7 @@ export default [
   ...fixupConfigRules(reactPlugin),
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'], // ESLint가 검사할 파일 확장자 설정
-    plugins: { ...react, ...eslintPluginPrettier },
+    plugins: { ...react, prettier: eslintPluginPrettier },
     languageOptions: {
       ecmaVersion: 'latest', // default
       parserOptions: { ecmaFeatures: { jsx: true } },
@@ -22,7 +22,14 @@ export default [
       react: { version: 'detect' }, // 사용자가 설치한 버전으로 선택
     },
     rules: {
+      ...eslintPluginPrettier.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off',
+      'prettier/prettier': [
+        'error',
+        {
+          endOfLine: 'auto',
+        },
+      ],
     },
     ignores: ['node_modules', 'dist', 'public', '.next'],
   },
