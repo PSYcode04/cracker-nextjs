@@ -10,7 +10,10 @@ export default [
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   ...fixupConfigRules(reactPlugin),
-  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'], plugins: { ...react } },
+  {
+    files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+    plugins: { ...react, ...eslintPluginPrettier },
+  },
   {
     languageOptions: {
       parserOptions: { ecmaFeatures: { jsx: true } },
@@ -29,6 +32,5 @@ export default [
       'react/react-in-jsx-scope': 'off',
     },
   },
-  { ignores: ['node_modules', 'dist', 'public'] },
-  eslintPluginPrettier,
+  { ignores: ['node_modules', 'dist', 'public', '.next'] },
 ]
