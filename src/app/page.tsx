@@ -12,6 +12,7 @@ export default function Home() {
           height={38}
           priority
         />
+
         <ol className='font-mono list-inside list-decimal text-sm text-center sm:text-left'>
           <li className='mb-2'>
             Get started by editing{' '}
